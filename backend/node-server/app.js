@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
   host: 'mysql-node',
   user: 'root',
   port: '3306',
-  password: 'rootpassword',
+  password: '',
   database : 'express_react'
 
 })

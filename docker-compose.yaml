@@ -37,8 +37,8 @@ services:
         networks:
             - node-react
         environment:
-            # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            # MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
             MYSQL_DATABASE: "${DB_NAME}"
             MYSQL_USER: "${DB_USERNAME}"
             MYSQL_PASSWORD: "${DB_PASSWORD}"
