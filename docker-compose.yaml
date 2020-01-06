@@ -1,0 +1,49 @@
+version: "3.2"
+services:
+    app:
+        container_name: node-server
+        restart: always
+        build:
+            context: ./backend
+            dockerfile: node.Dockerfile
+        networks: 
+            - node-react
+        volumes: 
+            - ${SERVER_ROOT}:/usr/src/app/node-server
+            - "/usr/src/app/node-server/node_modules"
+        ports:
+            - '3002:3000'
+        links: 
+            - mysql-node
+    react:
+        container_name: react-client
+        build: 
+            context: ./frontend
+            dockerfile: react.Dockerfile
+        volumes: 
+            - ${CLIENT_ROOT}:/usr/src/app/react-client"
+            - "/usr/src/app/react-client/node_modules"
+        networks:
+            - node-react
+        ports: 
+            - "4500:3000"
+    mysql-node:
+        image: mysql:${MYSQL_VERSION}
+        restart: always
+        ports:
+            - "33010:3306"
+        volumes:
+            - mysql-data2:/var/lib/mysql
+        networks:
+            - node-react
+        environment:
+            # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+            MYSQL_DATABASE: "${DB_NAME}"
+            MYSQL_USER: "${DB_USERNAME}"
+            MYSQL_PASSWORD: "${DB_PASSWORD}"
+        container_name: mysql-node
+networks:
+    node-react:
+volumes:
+    mysql-data2:
