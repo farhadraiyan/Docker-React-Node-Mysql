@@ -21,9 +21,11 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+// var sql = "CREATE TABLE Admin_User (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))";
+// var sql = "INSERT INTO Admin_User (name, address) VALUES ('Farhad Hossain', 'Silvio ave')";
+connection.query(sql, function (error, results, fields) {
   if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
+  console.log('Row Inserted');
 });
 
 connection.end();
