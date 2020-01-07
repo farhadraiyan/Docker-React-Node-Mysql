@@ -11,18 +11,19 @@ var usersRouter = require('./routes/users');
 var app = express();
 //database connection 
 var connection = mysql.createConnection({
+  connectionLimit: 10,
   host: 'mysql-node',
   user: 'root',
   port: '3306',
-  password: '',
+  password: 'rootpassword',
   database : 'express_react'
 
 })
 
 connection.connect();
 
-// var sql = "CREATE TABLE Admin_User (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))";
-// var sql = "INSERT INTO Admin_User (name, address) VALUES ('Farhad Hossain', 'Silvio ave')";
+//var sql = "CREATE TABLE Admin_User (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))";
+var sql = "INSERT INTO Admin_User (name, address) VALUES ('Farhad Hossain 2', 'Silvio ave 2')";
 connection.query(sql, function (error, results, fields) {
   if (error) throw error;
   console.log('Row Inserted');
