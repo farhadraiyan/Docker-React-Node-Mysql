@@ -21,7 +21,7 @@ services:
             context: ./frontend
             dockerfile: react.Dockerfile
         volumes: 
-            - ${CLIENT_ROOT}:/usr/src/app/react-client"
+            - ${CLIENT_ROOT}:/usr/src/app/react-client
             - "/usr/src/app/react-client/node_modules"
         networks:
             - node-react
